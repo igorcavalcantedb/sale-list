@@ -1,11 +1,20 @@
 import NotificationButton from "../NotificationButton";
 import './styles.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
+import axios from "axios";
 function SalesCard() {
   const dateYearAgo = new Date(new Date().setDate(new Date().getDate() - 365));
   const [dateMin, setDateMin] = useState(dateYearAgo);
   const [dateMax, setDateMax] = useState(new Date());
+
+  useEffect(()=>{
+    axios.get("http://localhost:8080/v1/sales/find-all")
+    .then(response =>{
+      console.log(response.data);
+    })
+    console.log("Teste");
+  },[]);
 
   return (
     
