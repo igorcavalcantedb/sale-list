@@ -35,7 +35,7 @@ public class SaleController {
 
     }
 
-    @PostMapping("/notification")
+    @PostMapping("/notification") // TODO /{id}/notification
     public void notifyBySms(){
         smsService.sendSms();
         }
