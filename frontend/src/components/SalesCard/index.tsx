@@ -21,9 +21,7 @@ function SalesCard() {
     axios.get(`${BASE_URL}/v1/sales?start=${dmin}&end=${dmax}`)
       .then(response => {
         setSales(response.data.content);
-        console.log(response.data.content);
       })
-    console.log("Teste");
   }, [dateMin,dateMax]);
 
   return (
@@ -65,7 +63,7 @@ function SalesCard() {
                   <td className="show992">{sale.deals}</td>
                   <td>R$ {sale.amount.toFixed(2)}</td>
                   <td>
-                    <NotificationButton />
+                    <NotificationButton saleId={sale.id}/>
                   </td>
                 </tr>
 
