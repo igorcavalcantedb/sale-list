@@ -15,13 +15,16 @@ function SalesCard() {
   const [sales, setSales] = useState<Sale[]>([]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/v1/sales/find-all`)
+      const dmin = dateMin.toISOString().slice(0,10);
+      const dmax = dateMax.toISOString().slice(0,10);
+
+    axios.get(`${BASE_URL}/v1/sales?start=${dmin}&end=${dmax}`)
       .then(response => {
         setSales(response.data.content);
         console.log(response.data.content);
       })
     console.log("Teste");
-  }, []);
+  }, [dateMin,dateMax]);
 
   return (
 
